@@ -533,7 +533,14 @@ body {
         gap: 16px;
     }
 
-    .brand-row__media { display: none; }
+    .brand-row__media { display: block; }
+    .brand-row:last-child .brand-row__media { display: none; }
+    .brand-row__media .brand-img {
+        height: auto;
+        aspect-ratio: unset;
+        border-radius: 8px;
+        margin-bottom: 24px;
+    }
     .brand-detail     { display: none; }
     .brand-detail.brand-row__ctas { display: flex; }
     .brand-intro      { display: block; font-size: 0.95rem; line-height: 1.7; color: #444; margin-bottom: 20px; }
