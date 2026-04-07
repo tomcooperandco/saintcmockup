@@ -28,7 +28,7 @@ body {
 
 
 .hero__bg {
-    min-height: 90vh;
+    min-height: 80vh;
     position: relative;
     display: flex;
     align-items: flex-end;
@@ -42,26 +42,34 @@ body {
     inset: 0;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     animation: heroFade 21s infinite;
 }
 
-.hero__slide--1 { background-image: url('images/hero/QubedHero2.jpg'); }
-.hero__slide--2 { background-image: url('images/hero/TedBakerHero.jpeg'); animation-delay: 7s; }
-.hero__slide--3 { background-image: url('images/hero/QubedHero3.png'); animation-delay: 14s; }
+/* Disable fixed attachment on mobile — causes rendering issues on iOS */
+@media (max-width: 768px) {
+    .hero__slide {
+        background-attachment: scroll;
+    }
+}
+
+.hero__slide--1 { background-image: url('images/hero/QubedHero3.jpg'); }
+.hero__slide--2 { background-image: url('images/hero/QubedDataWheel.jpeg'); animation-delay: 7s; }
+.hero__slide--3 { background-image: url('images/hero/TedBakerHero.jpeg'); animation-delay: 14s; }
 
 @keyframes heroFade {
-    0%   { opacity: 0; }
-    10%  { opacity: 1; } /* ~2s fade in */
-    24%  { opacity: 1; } /* hold */
-    33%  { opacity: 0; } /* ~2s fade out, slot ends at 7s (33% of 21s) */
-    100% { opacity: 0; } /* wait for next cycle */
+    0%    { opacity: 0; }
+    7%    { opacity: 1; }
+    18%   { opacity: 1; }
+    25%   { opacity: 0; } /* slot ends at 7s (25% of 28s) */
+    100%  { opacity: 0; }
 }
 
 /* Gradient overlay */
 .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0) 100%);
     z-index: 1;
 }
 
@@ -415,6 +423,8 @@ body {
 }
 
 
+.brand-img--mobile { display: none; }
+
 .brand-img {
     width: 100%;
     height: 360px;
@@ -535,6 +545,8 @@ body {
 
     .brand-row__media { display: block; }
     .brand-row:last-child .brand-row__media { display: none; }
+    .brand-img--desktop { display: none; }
+    .brand-img--mobile  { display: block; }
     .brand-row__media .brand-img {
         height: auto;
         aspect-ratio: unset;
@@ -578,8 +590,10 @@ body {
     max-width: 480px;
     max-height: 85vh;
     background: #fff;
-    z-index: 500;
+    border-radius: 12px;
+    overflow: hidden;
     overflow-y: auto;
+    z-index: 500;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease;
