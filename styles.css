@@ -494,7 +494,28 @@ body {
 
 /* Mobile brand card — hide detail, show intro + button */
 .brand-intro  { display: none; }
-.brand-more-btn { display: none; }
+
+.brand-more-btn {
+    display: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+}
+
+.brand-more-btn:hover {
+    color: #1a1a1a;
+}
 
 @media (max-width: 768px) {
     #brands {
@@ -514,27 +535,11 @@ body {
 
     .brand-row__media { display: none; }
     .brand-detail     { display: none; }
+    .brand-detail.brand-row__ctas { display: flex; }
     .brand-intro      { display: block; font-size: 0.95rem; line-height: 1.7; color: #444; margin-bottom: 20px; }
 
     .brand-more-btn {
         display: inline-block;
-        font-family: 'Raleway', sans-serif;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #1a1a1a;
-        background: none;
-        border: 2px solid #1a1a1a;
-        border-radius: 8px;
-        padding: 10px 24px;
-        cursor: pointer;
-        transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .brand-more-btn:hover {
-        background-color: #1a1a1a;
-        color: #fff;
     }
 }
 
